@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { LocationMarkerIcon } from "@heroicons/react/outline";
+import { BriefcaseIcon, LocationMarkerIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 
 const Home: NextPage = () => {
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
                 Crafting elegant software solutions to delight customers and
                 team members
               </h3>
-              <div className="my-12 -mx-6 bg-gray-700 py-12 px-4 text-left text-xl font-thin text-white md:px-12">
+              <div className="-mx-6 mt-12 bg-gray-700 py-12 px-4 text-left text-xl font-thin text-white md:px-12">
                 <p className="text-center text-3xl font-semibold">
                   Hi, I&apos;m Brian.
                 </p>
@@ -66,6 +66,64 @@ const Home: NextPage = () => {
                   when its being thoughtfully crafted and the team is supporting
                   one another.
                 </p>
+              </div>
+              <div className="mt-12">
+                <h2 className="text-2xl font-semibold leading-none text-gray-700">
+                  Work & School
+                </h2>
+                <div className="container mx-auto mt-6 grid max-w-2xl items-center gap-8">
+                  <div className="text-normal flex items-start font-semibold uppercase leading-none text-gray-500">
+                    <div>
+                      <BriefcaseIcon width={28} className="mr-4" />{" "}
+                    </div>
+                    <div className="text-left">
+                      <div>IntelliTect</div>
+                      <div className="text-sm font-thin">
+                        January 2019 - Present
+                      </div>
+
+                      <div className="mt-2 text-sm">
+                        Senior Software Engineer
+                      </div>
+                      <ul className="mt-2 list-disc pl-12 font-thin normal-case">
+                        <li>Gotta come up with some things to put here</li>
+                        <li>Yup, at least a couple</li>
+                        <li>
+                          Should probably figure out some shared styling for
+                          lists
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="text-normal flex items-start font-semibold uppercase leading-none text-gray-500">
+                    <div>
+                      <BriefcaseIcon width={28} className="mr-4" />{" "}
+                    </div>
+                    <div className="text-left">
+                      <div>World Wide Group, LLC</div>
+                      <div className="text-sm font-thin">
+                        May 2016 - December 2018
+                      </div>
+
+                      <div className="mt-2 text-sm">Division Supervisor</div>
+                      <ul className="mt-2 list-disc pl-12 font-thin normal-case">
+                        <li>
+                          Managed a team of 4 full-time developers and 1 remote
+                          contractor
+                        </li>
+                        <li>
+                          Provided training, guidance and advice for other devs
+                        </li>
+                        <li>Performed code reviews</li>
+                        <li>
+                          Remained directly involved in development in
+                          additional to supervisor duties, mainly as a software
+                          architect
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="py-24">
                 Some other content, as you might imagine
