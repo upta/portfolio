@@ -56,15 +56,15 @@ const Home: NextPage = ({
                   <div className="flex flex-col gap-8">
                     {experience
                       .filter((a: any) => a.type === "Work")
-                      .map((a: any) => (
-                        <Experience {...a} />
+                      .map((a: any, i: number) => (
+                        <Experience key={i} {...a} />
                       ))}
                   </div>
                   <div className="flex flex-col gap-8">
                     {experience
                       .filter((a: any) => a.type === "Education")
-                      .map((a: any) => (
-                        <Experience {...a} />
+                      .map((a: any, i: number) => (
+                        <Experience key={i} {...a} />
                       ))}
                   </div>
                 </div>
