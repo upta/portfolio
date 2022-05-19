@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react";
 import type { GetStaticProps, NextPage } from "next";
 import { Bio } from "../components/bio";
 import { Experience } from "../components/experience";
+import { Tools } from "../components/tools";
 import { client, image } from "../sanity";
 
 const Home: NextPage = ({
@@ -13,6 +14,7 @@ const Home: NextPage = ({
   location,
   photo,
   experience,
+  tech: { languages, frameworks, tools },
 }: any) => {
   return (
     <main>
@@ -49,10 +51,19 @@ const Home: NextPage = ({
               <Bio className="-mx-6 mt-12" {...bio} />
               <div className="mt-12">
                 <h2 className="text-2xl font-semibold leading-none text-gray-700">
+                  Tools of the Trade
+                </h2>
+                <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 md:grid-cols-3">
+                  <Tools title="Languages" list={languages} />
+                  <Tools title="Frameworks" list={frameworks} />
+                  <Tools title="Tools" list={tools} />
+                </div>
+              </div>
+              <div className="mt-12">
+                <h2 className="text-2xl font-semibold leading-none text-gray-700">
                   Work & School
                 </h2>
-                {/* <div className="container mx-auto mt-6 grid max-w-2xl items-center gap-8"> */}
-                <div className="xs:grid-cols-1 container mx-auto mt-6 grid gap-8 lg:grid-cols-2">
+                <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 lg:grid-cols-2">
                   <div className="flex flex-col gap-8">
                     {experience
                       .filter((a: any) => a.type === "Work")

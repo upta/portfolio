@@ -10,6 +10,7 @@ import experience from "./experience";
 import portfolio from "./portfolio";
 import post from "./post";
 import section from "./section";
+import tech from "./tech";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,6 +25,7 @@ export default createSchema({
     portfolio,
     section,
     post,
+    tech,
     author,
     category,
     // When added to this list, object types can be used as

@@ -48,5 +48,10 @@ export default {
       type: "array",
       of: [{ type: "experience" }],
     },
+    {
+      name: "tech",
+      title: "Tech",
+      type: "tech",
+    },
   ],
 };
