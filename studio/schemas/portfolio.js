@@ -42,5 +42,11 @@ export default {
       title: "Bio",
       type: "section",
     },
+    {
+      name: "experience",
+      title: "Experience",
+      type: "array",
+      of: [{ type: "experience" }],
+    },
   ],
 };

@@ -1,7 +1,8 @@
-import { BriefcaseIcon, LocationMarkerIcon } from "@heroicons/react/outline";
+import { LocationMarkerIcon } from "@heroicons/react/outline";
 import { PortableText } from "@portabletext/react";
 import type { GetStaticProps, NextPage } from "next";
 import { Bio } from "../components/bio";
+import { Experience } from "../components/experience";
 import { client, image } from "../sanity";
 
 const Home: NextPage = ({
@@ -11,6 +12,7 @@ const Home: NextPage = ({
   header,
   location,
   photo,
+  experience,
 }: any) => {
   return (
     <main>
@@ -49,57 +51,21 @@ const Home: NextPage = ({
                 <h2 className="text-2xl font-semibold leading-none text-gray-700">
                   Work & School
                 </h2>
-                <div className="container mx-auto mt-6 grid max-w-2xl items-center gap-8">
-                  <div className="text-normal flex items-start font-semibold uppercase leading-none text-gray-500">
-                    <div>
-                      <BriefcaseIcon width={28} className="mr-4" />{" "}
-                    </div>
-                    <div className="text-left">
-                      <div>IntelliTect</div>
-                      <div className="text-sm font-thin">
-                        January 2019 - Present
-                      </div>
-
-                      <div className="mt-2 text-sm">
-                        Senior Software Engineer
-                      </div>
-                      <ul className="mt-2 list-disc pl-12 font-thin normal-case">
-                        <li>Gotta come up with some things to put here</li>
-                        <li>Yup, at least a couple</li>
-                        <li>
-                          Should probably figure out some shared styling for
-                          lists
-                        </li>
-                      </ul>
-                    </div>
+                {/* <div className="container mx-auto mt-6 grid max-w-2xl items-center gap-8"> */}
+                <div className="xs:grid-cols-1 container mx-auto mt-6 grid gap-8 lg:grid-cols-2">
+                  <div className="flex flex-col gap-8">
+                    {experience
+                      .filter((a: any) => a.type === "Work")
+                      .map((a: any) => (
+                        <Experience {...a} />
+                      ))}
                   </div>
-                  <div className="text-normal flex items-start font-semibold uppercase leading-none text-gray-500">
-                    <div>
-                      <BriefcaseIcon width={28} className="mr-4" />{" "}
-                    </div>
-                    <div className="text-left">
-                      <div>World Wide Group, LLC</div>
-                      <div className="text-sm font-thin">
-                        May 2016 - December 2018
-                      </div>
-
-                      <div className="mt-2 text-sm">Division Supervisor</div>
-                      <ul className="mt-2 list-disc pl-12 font-thin normal-case">
-                        <li>
-                          Managed a team of 4 full-time developers and 1 remote
-                          contractor
-                        </li>
-                        <li>
-                          Provided training, guidance and advice for other devs
-                        </li>
-                        <li>Performed code reviews</li>
-                        <li>
-                          Remained directly involved in development in
-                          additional to supervisor duties, mainly as a software
-                          architect
-                        </li>
-                      </ul>
-                    </div>
+                  <div className="flex flex-col gap-8">
+                    {experience
+                      .filter((a: any) => a.type === "Education")
+                      .map((a: any) => (
+                        <Experience {...a} />
+                      ))}
                   </div>
                 </div>
               </div>
