@@ -51,6 +51,7 @@ export const Project: FC<Props> = ({
               href={a}
               className="mb-1 block text-blue-400"
               target="_blank"
+              rel="noreferrer"
             >
               {a}
             </a>
