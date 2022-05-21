@@ -53,5 +53,11 @@ export default {
       title: "Tech",
       type: "tech",
     },
+    {
+      name: "projects",
+      title: "Projects",
+      type: "array",
+      of: [{ type: "project" }],
+    },
   ],
 };

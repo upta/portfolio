@@ -9,6 +9,7 @@ import category from "./category";
 import experience from "./experience";
 import portfolio from "./portfolio";
 import post from "./post";
+import project from "./project";
 import section from "./section";
 import tech from "./tech";
 
@@ -28,6 +29,7 @@ export default createSchema({
     tech,
     author,
     category,
+    project,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,

@@ -35,7 +35,7 @@ export const Experience: FC<Props> = ({
 }) => {
   return (
     <div
-      className={`${className} text-normal flex items-start font-semibold uppercase leading-none text-gray-500`}
+      className={`${className} text-normal flex items-start font-semibold uppercase leading-none text-gray-600`}
     >
       <div>
         {type === "Work" ? (

@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react";
 import type { GetStaticProps, NextPage } from "next";
 import { Bio } from "../components/bio";
 import { Experience } from "../components/experience";
+import { Project } from "../components/project";
 import { Tools } from "../components/tools";
 import { client, image } from "../sanity";
 
@@ -15,6 +16,7 @@ const Home: NextPage = ({
   photo,
   experience,
   tech: { languages, frameworks, tools },
+  projects,
 }: any) => {
   return (
     <main>
@@ -26,8 +28,8 @@ const Home: NextPage = ({
         <div className="absolute top-0 h-full w-full bg-slate-900 opacity-40"></div>
       </section>
       <section className="relative">
-        <div className="container mx-auto -mt-64 px-4">
-          <div className={`rounded-lg bg-white px-6 pt-[96px] shadow-xl`}>
+        <div className="container mx-auto -mt-64 mb-6 px-4">
+          <div className={`rounded-lg bg-white px-6 pb-12 pt-[96px] shadow-xl`}>
             <img
               alt={`${fullName} Photo`}
               src={image(photo).width(192).url()}
@@ -42,10 +44,10 @@ const Home: NextPage = ({
                 <LocationMarkerIcon width={24} className="mr-2" />{" "}
                 <span>{location}</span>
               </div>
-              <h2 className="mt-10 text-2xl font-semibold leading-none text-gray-700">
+              <h2 className="mt-10 text-2xl font-semibold leading-none text-gray-600">
                 {header.title}
               </h2>
-              <h3 className="mt-4 text-xl font-light leading-none text-gray-500">
+              <h3 className="mt-4 text-xl font-light leading-none text-gray-600">
                 <PortableText value={header.body} />
               </h3>
               <Bio className="-mx-6 mt-12" {...bio} />
@@ -80,8 +82,17 @@ const Home: NextPage = ({
                   </div>
                 </div>
               </div>
-              <div className="py-24">
-                Some other content, as you might imagine
+              <div className="mt-12">
+                <h2 className="text-2xl font-semibold leading-none text-gray-700">
+                  Personal Projects
+                </h2>
+                <div className="container mx-auto mt-7">
+                  <div className="flex flex-col gap-8">
+                    {projects.map((a: any, i: number) => (
+                      <Project key={i} {...a} />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
