@@ -35,7 +35,7 @@ export const Experience: FC<Props> = ({
 }) => {
   return (
     <div
-      className={`${className} text-normal flex items-start font-semibold uppercase leading-none text-gray-600`}
+      className={`${className} text-normal flex items-start font-semibold uppercase leading-none`}
     >
       <div>
         {type === "Work" ? (
@@ -46,7 +46,7 @@ export const Experience: FC<Props> = ({
       </div>
       <div className="text-left">
         <div>{where}</div>
-        <div className="text-sm font-thin">{when}</div>
+        <div className="text-sm font-thin text-gray-400">{when}</div>
 
         <div className="mt-2 text-sm">{title}</div>
         <PortableText value={body} components={components} />

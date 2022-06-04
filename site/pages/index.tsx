@@ -23,37 +23,45 @@ const Home: NextPage = ({
       <section className="relative h-[500px]">
         <div
           style={{ backgroundImage: `url('${background}')` }}
-          className={`absolute top-0 h-full w-full bg-cover bg-center`}
+          className={`absolute top-0 h-full w-full  bg-cover bg-center`}
         ></div>
-        <div className="absolute top-0 h-full w-full bg-slate-900 opacity-40"></div>
+        <div className="absolute top-0 h-full w-full bg-slate-900 opacity-30"></div>
       </section>
+
       <section className="relative">
-        <div className="container mx-auto -mt-64 mb-6 px-4">
-          <div className={`rounded-lg bg-white px-6 pb-12 pt-[96px] shadow-xl`}>
+        <div className="container mx-auto -mt-64 mb-6 px-4 brightness-125">
+          <div
+            className={`rounded-lg bg-gray-700 px-6 pb-12 pt-[96px] shadow-xl`}
+          >
             <img
               alt={`${fullName} Photo`}
               src={image(photo).width(192).url()}
-              className="mx-auto -mt-[192px] h-auto w-[192px] rounded-full border-none shadow-xl"
+              className="mx-auto -mt-[192px] h-auto w-[192px] rounded-full border-none shadow-xl brightness-90"
             />
 
             <div className="mt-6 text-center">
-              <h1 className="text-4xl font-semibold leading-normal text-gray-700">
+              <h1 className="text-4xl font-semibold leading-normal">
                 {fullName}
               </h1>
-              <div className="mt-2 inline-flex items-center text-sm font-semibold uppercase leading-none text-gray-500">
+
+              <div className="mt-2 inline-flex items-center text-sm font-semibold uppercase leading-none text-gray-400">
                 <LocationMarkerIcon width={24} className="mr-2" />{" "}
                 <span>{location}</span>
               </div>
-              <h2 className="mt-10 text-2xl font-semibold leading-none text-gray-600">
+
+              <h2 className="mt-10 text-2xl font-semibold leading-none">
                 {header.title}
               </h2>
-              <h3 className="mt-4 text-xl font-light leading-none text-gray-600">
+
+              <h3 className="mt-4 text-xl font-light leading-none">
                 <PortableText value={header.body} />
               </h3>
+
               <Bio className="-mx-6 mt-12" {...bio} />
+
               <div className="mt-12">
-                <h2 className="text-2xl font-semibold leading-none text-gray-700">
-                  Tools of the Trade
+                <h2 className="text-2xl font-semibold leading-none text-gray-300">
+                  Current Tools of the Trade
                 </h2>
                 <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 md:grid-cols-3">
                   <Tools title="Languages" list={languages} />
@@ -61,9 +69,10 @@ const Home: NextPage = ({
                   <Tools title="Tools" list={tools} />
                 </div>
               </div>
+
               <div className="mt-12">
                 <h2 className="text-2xl font-semibold leading-none text-gray-700">
-                  Work & School
+                  Time Spent at Work & School
                 </h2>
                 <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 lg:grid-cols-2">
                   <div className="flex flex-col gap-8">
@@ -82,9 +91,10 @@ const Home: NextPage = ({
                   </div>
                 </div>
               </div>
+
               <div className="mt-12">
                 <h2 className="text-2xl font-semibold leading-none text-gray-700">
-                  Personal Projects
+                  A Few Personal Projects
                 </h2>
                 <div className="container mx-auto mt-7">
                   <div className="flex flex-col gap-8">

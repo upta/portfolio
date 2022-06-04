@@ -32,17 +32,20 @@ export const Project: FC<Props> = ({
 }) => {
   return (
     <div
-      className={`${className} grid gap-y-4 gap-x-6 text-left text-gray-600 lg:grid-cols-4`}
+      className={`${className} grid gap-y-4 gap-x-6 text-left lg:grid-cols-4`}
     >
       <div className="text-xl font-semibold lg:col-span-3 lg:col-start-2">
         {name}
       </div>
+
       <div className="lg:row-span-2 lg:row-start-1 lg:pt-1">
         <img
           src={image(thumbnail).width(800).url()}
           alt={`${name} Thumbnail`}
+          className="max-h-[400px]"
         />
       </div>
+
       <div className="lg:col-span-3 lg:col-start-2">
         <div>
           {urls.map((a, i) => (
@@ -72,7 +75,7 @@ export const Project: FC<Props> = ({
 };
 
 const Header: FC<{ text: string }> = ({ text }) => (
-  <p className="mt-4 mb-2 text-sm font-semibold uppercase leading-none">
+  <p className="mt-4 mb-2 text-sm font-semibold uppercase leading-none text-gray-400">
     {text}
   </p>
 );
