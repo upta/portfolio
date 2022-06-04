@@ -42,7 +42,7 @@ export const Project: FC<Props> = ({
         <img
           src={image(thumbnail).width(800).url()}
           alt={`${name} Thumbnail`}
-          className="max-h-[400px]"
+          className="max-h-[400px] brightness-90"
         />
       </div>
 
