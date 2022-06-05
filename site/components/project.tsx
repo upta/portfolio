@@ -1,16 +1,10 @@
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
-import { TypedObject } from "@portabletext/types";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { FC, HTMLAttributes } from "react";
-import { image } from "../sanity";
+import { FC } from "react";
+import { Project as ProjectSchema, SanityKeyed } from "../sanity";
+import { image } from "../sanity/client";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  name: string;
-  urls: string[];
-  thumbnail: SanityImageSource;
-  description: TypedObject | TypedObject[];
-  technology: TypedObject | TypedObject[];
-  lessons: TypedObject | TypedObject[];
+type Props = React.HTMLAttributes<HTMLDivElement> & {
+  value: Array<SanityKeyed<ProjectSchema>>;
 };
 
 const components: Partial<PortableTextReactComponents> = {
@@ -21,8 +15,24 @@ const components: Partial<PortableTextReactComponents> = {
   },
 };
 
-export const Project: FC<Props> = ({
-  className,
+export const Project: FC<Props> = ({ className, value }) => {
+  return (
+    <div className={`${className}`}>
+      <h2 className="text-2xl font-semibold leading-none text-gray-700 pdf:text-base">
+        A Few Side Projects
+      </h2>
+      <div className="container mx-auto mt-7 pdf:mt-2 pdf:ml-2">
+        <div className="flex flex-col gap-8 pdf:gap-2">
+          {value.map((a: any, i: number) => (
+            <Item key={i} {...a} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const Item: FC<ProjectSchema> = ({
   name,
   urls,
   thumbnail,
@@ -31,44 +41,60 @@ export const Project: FC<Props> = ({
   lessons,
 }) => {
   return (
-    <div
-      className={`${className} grid gap-y-4 gap-x-6 text-left lg:grid-cols-4`}
-    >
-      <div className="text-xl font-semibold lg:col-span-3 lg:col-start-2">
+    <div className="grid gap-y-4 gap-x-6 text-left pdf:gap-1 lg:grid-cols-4">
+      <div className="text-xl font-semibold pdf:text-sm lg:col-span-3 lg:col-start-2">
         {name}
       </div>
 
-      <div className="lg:row-span-2 lg:row-start-1 lg:pt-1">
-        <img
-          src={image(thumbnail).width(800).url()}
-          alt={`${name} Thumbnail`}
-          className="max-h-[400px] brightness-90"
-        />
+      <div className="pdf:hidden lg:row-span-2 lg:row-start-1 lg:pt-1">
+        {thumbnail && (
+          <img
+            src={image(thumbnail).width(800).url()}
+            alt={`${name} Thumbnail`}
+            className="max-h-[400px] brightness-90"
+          />
+        )}
       </div>
 
       <div className="lg:col-span-3 lg:col-start-2">
-        <div>
-          {urls.map((a, i) => (
-            <a
-              key={i}
-              href={a}
-              className="mb-1 block text-blue-400"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {a}
-            </a>
-          ))}
+        {urls && (
+          <div>
+            {urls.map((a, i) => (
+              <a
+                key={i}
+                href={a}
+                className="mb-1 block text-blue-400"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {a}
+              </a>
+            ))}
+          </div>
+        )}
+
+        <div className="pdf:hidden">
+          {description && (
+            <>
+              <Header text="Description" />
+              <PortableText value={description} components={components} />
+            </>
+          )}
+
+          {technology && (
+            <>
+              <Header text="Technology" />
+              <PortableText value={technology} components={components} />
+            </>
+          )}
+
+          {lessons && (
+            <>
+              <Header text="Lessons Learned" />
+              <PortableText value={lessons} components={components} />
+            </>
+          )}
         </div>
-
-        <Header text="Description" />
-        <PortableText value={description} components={components} />
-
-        <Header text="Technology" />
-        <PortableText value={technology} components={components} />
-
-        <Header text="Lessons Learned" />
-        <PortableText value={lessons} components={components} />
       </div>
     </div>
   );

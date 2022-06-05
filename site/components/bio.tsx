@@ -1,10 +1,9 @@
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
-import { TypedObject } from "@portabletext/types";
 import { FC, HTMLAttributes } from "react";
+import { Section } from "../sanity";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
-  title: string;
-  body: TypedObject | TypedObject[];
+  value: Section;
 };
 
 const components: Partial<PortableTextReactComponents> = {
@@ -16,14 +15,14 @@ const components: Partial<PortableTextReactComponents> = {
   },
 };
 
-export const Bio: FC<Props> = ({ body, className, title }) => {
+export const Bio: FC<Props> = ({ className, value: { title, body } }) => {
   return (
     <div
       className={`${className} bg-gray-700 py-12 px-4 text-left text-xl font-thin text-white md:px-12`}
     >
       <p className="text-center text-3xl font-semibold">{title}</p>
       <div className="mt-4">
-        <PortableText value={body} components={components} />
+        {body && <PortableText value={body} components={components} />}
       </div>
     </div>
   );

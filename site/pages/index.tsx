@@ -1,29 +1,32 @@
-import { LocationMarkerIcon } from "@heroicons/react/outline";
-import { PortableText } from "@portabletext/react";
+import { DocumentDownloadIcon } from "@heroicons/react/outline";
 import type { GetStaticProps, NextPage } from "next";
+import { Basic } from "../components/basic";
 import { Bio } from "../components/bio";
 import { Experience } from "../components/experience";
+import { Name } from "../components/name";
 import { Project } from "../components/project";
-import { Tools } from "../components/tools";
-import { client, image } from "../sanity";
+import { Tech } from "../components/tech";
+import { Portfolio } from "../sanity";
+import { client, image } from "../sanity/client";
 
-const Home: NextPage = ({
+const Home: NextPage<Portfolio> = ({
   background,
   bio,
+  contact,
   fullName,
   header,
   location,
   photo,
   experience,
-  tech: { languages, frameworks, tools },
+  tech,
   projects,
-}: any) => {
+}) => {
   return (
     <main>
       <section className="relative h-[500px]">
         <div
           style={{ backgroundImage: `url('${background}')` }}
-          className={`absolute top-0 h-full w-full  bg-cover bg-center`}
+          className={`absolute top-0 h-full w-full bg-cover bg-center`}
         ></div>
         <div className="absolute top-0 h-full w-full bg-slate-900 opacity-30"></div>
       </section>
@@ -31,79 +34,55 @@ const Home: NextPage = ({
       <section className="relative">
         <div className="container mx-auto -mt-64 mb-6 px-4 brightness-125">
           <div
-            className={`rounded-lg bg-gray-700 px-6 pb-12 pt-[96px] shadow-xl`}
+            className={`relative rounded-lg bg-gray-700 px-6 pb-12 pt-[96px] shadow-xl`}
           >
-            <img
-              alt={`${fullName} Photo`}
-              src={image(photo).width(192).url()}
-              className="mx-auto -mt-[192px] h-auto w-[192px] rounded-full border-none shadow-xl brightness-90"
-            />
+            <a
+              href="/api/pdf"
+              target="_blank"
+              className="absolute top-4 right-4 inline-flex flex-col items-center text-gray-300"
+            >
+              <DocumentDownloadIcon width={42} />
+              <small className="text-center">
+                Download
+                <br />
+                Resume
+              </small>
+            </a>
+            {photo && (
+              <img
+                alt={`${fullName} Photo`}
+                src={image(photo).width(192).url()}
+                className="mx-auto -mt-[192px] h-auto w-[192px] rounded-full border-none shadow-xl brightness-90"
+              />
+            )}
 
             <div className="mt-6 text-center">
-              <h1 className="text-4xl font-semibold leading-normal">
-                {fullName}
-              </h1>
+              <Name fullName={fullName} />
 
-              <div className="mt-2 inline-flex items-center text-sm font-semibold uppercase leading-none text-gray-400">
-                <LocationMarkerIcon width={24} className="mr-2" />{" "}
-                <span>{location}</span>
-              </div>
+              <Basic
+                location={location}
+                email={contact?.email}
+                phone={undefined}
+                website={undefined}
+              />
 
-              <h2 className="mt-10 text-2xl font-semibold leading-none">
+              {/* <h2 className="mt-10 text-2xl font-semibold leading-none">
                 {header.title}
               </h2>
 
               <h3 className="mt-4 text-xl font-light leading-none">
                 <PortableText value={header.body} />
-              </h3>
+              </h3> */}
 
-              <Bio className="-mx-6 mt-12" {...bio} />
+              {bio && <Bio className="-mx-6 mt-12" value={bio} />}
 
-              <div className="mt-12">
-                <h2 className="text-2xl font-semibold leading-none text-gray-300">
-                  Current Tools of the Trade
-                </h2>
-                <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 md:grid-cols-3">
-                  <Tools title="Languages" list={languages} />
-                  <Tools title="Frameworks" list={frameworks} />
-                  <Tools title="Tools" list={tools} />
-                </div>
-              </div>
+              {tech && <Tech className="mt-12" value={tech} />}
 
-              <div className="mt-12">
-                <h2 className="text-2xl font-semibold leading-none text-gray-700">
-                  Time Spent at Work & School
-                </h2>
-                <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 lg:grid-cols-2">
-                  <div className="flex flex-col gap-8">
-                    {experience
-                      .filter((a: any) => a.type === "Work")
-                      .map((a: any, i: number) => (
-                        <Experience key={i} {...a} />
-                      ))}
-                  </div>
-                  <div className="flex flex-col gap-8">
-                    {experience
-                      .filter((a: any) => a.type === "Education")
-                      .map((a: any, i: number) => (
-                        <Experience key={i} {...a} />
-                      ))}
-                  </div>
-                </div>
-              </div>
+              {experience && (
+                <Experience className="mt-12" value={experience} />
+              )}
 
-              <div className="mt-12">
-                <h2 className="text-2xl font-semibold leading-none text-gray-700">
-                  A Few Personal Projects
-                </h2>
-                <div className="container mx-auto mt-7">
-                  <div className="flex flex-col gap-8">
-                    {projects.map((a: any, i: number) => (
-                      <Project key={i} {...a} />
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {projects && <Project className="mt-12" value={projects} />}
             </div>
           </div>
         </div>
@@ -113,7 +92,7 @@ const Home: NextPage = ({
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const portfolio = await client.fetch(
+  const portfolio = await client.fetch<Portfolio>(
     `*[_type == "portfolio" && slug.current == "brian"][0]`
   );
 

@@ -43,6 +43,11 @@ export default {
       type: "section",
     },
     {
+      name: "contact",
+      title: "Contact Info",
+      type: "contact",
+    },
+    {
       name: "experience",
       title: "Experience",
       type: "array",
