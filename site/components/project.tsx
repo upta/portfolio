@@ -39,6 +39,7 @@ export const Item: FC<ProjectSchema> = ({
   description,
   technology,
   lessons,
+  summary,
 }) => {
   return (
     <div className="grid gap-y-4 gap-x-6 text-left pdf:gap-1 lg:grid-cols-4">
@@ -55,6 +56,12 @@ export const Item: FC<ProjectSchema> = ({
           />
         )}
       </div>
+
+      {summary && (
+        <div className="text-sm font-thin text-gray-500 pdf:visible">
+          {summary}
+        </div>
+      )}
 
       <div className="lg:col-span-3 lg:col-start-2">
         {urls && (

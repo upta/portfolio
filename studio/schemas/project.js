@@ -20,6 +20,11 @@ export default {
       type: "image",
     },
     {
+      name: "summary",
+      title: "Summary",
+      type: "string",
+    },
+    {
       name: "description",
       title: "Description",
       type: "blockContent",

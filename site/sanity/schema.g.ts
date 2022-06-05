@@ -221,6 +221,13 @@ export type Project = {
   };
 
   /**
+   * Summary — `string`
+   *
+   *
+   */
+  summary?: string;
+
+  /**
    * Description — `blockContent`
    *
    *
