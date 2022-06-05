@@ -33,11 +33,6 @@ export default {
       type: "url",
     },
     {
-      name: "header",
-      title: "Header",
-      type: "section",
-    },
-    {
       name: "bio",
       title: "Bio",
       type: "section",

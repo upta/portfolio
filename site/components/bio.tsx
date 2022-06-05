@@ -15,15 +15,21 @@ const components: Partial<PortableTextReactComponents> = {
   },
 };
 
-export const Bio: FC<Props> = ({ className, value: { title, body } }) => {
+export const Bio: FC<Props> = ({
+  className,
+  value: { title, body, summary },
+}) => {
   return (
-    <div
-      className={`${className} bg-gray-700 py-12 px-4 text-left text-xl font-thin text-white md:px-12`}
-    >
-      <p className="text-center text-3xl font-semibold">{title}</p>
-      <div className="mt-4">
-        {body && <PortableText value={body} components={components} />}
+    <>
+      <div
+        className={`${className} bg-gray-800 py-12 px-4 text-left text-xl font-thin text-gray-400 pdf:hidden md:px-12`}
+      >
+        <p className="text-center text-3xl font-semibold">{title}</p>
+        <div className="mt-4">
+          {body && <PortableText value={body} components={components} />}
+        </div>
       </div>
-    </div>
+      <div className="mt-2 hidden font-thin pdf:block">{summary}</div>
+    </>
   );
 };

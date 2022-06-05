@@ -16,7 +16,7 @@ const components: Partial<PortableTextReactComponents> = {
   ),
   list: {
     bullet: ({ children }) => (
-      <ul className="mt-2 list-disc pl-6 font-thin normal-case leading-tight pdf:text-sm pdf:text-gray-500">
+      <ul className="mt-2 list-disc pl-6 font-thin normal-case leading-snug pdf:text-sm pdf:text-gray-500">
         {children}
       </ul>
     ),
@@ -29,7 +29,7 @@ export const Experience: FC<Props> = ({ className, value }) => {
       <h2 className="text-2xl font-semibold leading-none pdf:hidden">
         Time Spent at Work & School
       </h2>
-      <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 pdf:mx-0 pdf:mt-0 pdf:block pdf:gap-4 lg:grid-cols-2">
+      <div className="xs:grid-cols-1 container mx-auto mt-10 grid gap-8 pdf:mx-0 pdf:mt-0 pdf:block pdf:gap-4 lg:grid-cols-2">
         <div className="flex flex-col gap-8 pdf:block">
           {value
             .filter((a) => a.type === "Work")
@@ -65,7 +65,7 @@ export const Item: FC<ExperienceSchema> = ({ type, where, when, what }) => {
         <div className="text-left">
           {where && <div className="uppercase pdf:text-sm">{where}</div>}
           {when && (
-            <div className="text-xs font-thin text-gray-400 pdf:text-sm pdf:text-gray-500">
+            <div className="text-sm text-gray-400 pdf:font-thin pdf:text-gray-500">
               {when}
             </div>
           )}

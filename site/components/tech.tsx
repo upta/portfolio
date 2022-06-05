@@ -14,7 +14,7 @@ export const Tech: FC<Props> = ({
       <h2 className="text-2xl font-semibold leading-none text-gray-300 pdf:hidden pdf:text-lg">
         Current Tools of the Trade
       </h2>
-      <div className="xs:grid-cols-1 container mx-auto mt-7 grid gap-8 pdf:mt-2 pdf:inline-grid pdf:grid-cols-3 md:grid-cols-3">
+      <div className="xs:grid-cols-1 container mx-auto mt-10 grid gap-8 pdf:mt-2 pdf:inline-grid pdf:grid-cols-3 md:grid-cols-3">
         {languages && <List title="Languages" list={languages} />}
         {frameworks && <List title="Frameworks" list={frameworks} />}
         {tools && <List title="Tools" list={tools} />}

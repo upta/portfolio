@@ -1,5 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
 import { Basic } from "../components/basic";
+import { Bio } from "../components/bio";
 import { Experience } from "../components/experience";
 import { Name } from "../components/name";
 import { Project } from "../components/project";
@@ -8,6 +9,7 @@ import { Portfolio } from "../sanity";
 import { client } from "../sanity/client";
 
 const Pdf: NextPage<Portfolio> = ({
+  bio,
   contact,
   fullName,
   location,
@@ -17,10 +19,10 @@ const Pdf: NextPage<Portfolio> = ({
 }) => {
   return (
     <main className="pdf bg-white p-4 text-gray-600">
-      <div className="flex justify-between pdf:-mt-4">
+      <div className="flex justify-between gap-12 pdf:-mt-4">
         <div>
           <Name fullName={fullName} />
-          <div className="mt-2">something from the bio perhaps?</div>
+          {bio && <Bio value={bio} />}
         </div>
 
         <Basic

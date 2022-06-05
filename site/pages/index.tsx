@@ -1,9 +1,7 @@
-import { DocumentDownloadIcon } from "@heroicons/react/outline";
 import type { GetStaticProps, NextPage } from "next";
 import { Basic } from "../components/basic";
 import { Bio } from "../components/bio";
 import { Experience } from "../components/experience";
-import { Name } from "../components/name";
 import { Project } from "../components/project";
 import { Tech } from "../components/tech";
 import { Portfolio } from "../sanity";
@@ -14,7 +12,6 @@ const Home: NextPage<Portfolio> = ({
   bio,
   contact,
   fullName,
-  header,
   location,
   photo,
   experience,
@@ -36,18 +33,6 @@ const Home: NextPage<Portfolio> = ({
           <div
             className={`relative rounded-lg bg-gray-700 px-6 pb-12 pt-[96px] shadow-xl`}
           >
-            <a
-              href="/api/pdf"
-              target="_blank"
-              className="absolute top-4 right-4 inline-flex flex-col items-center text-gray-300"
-            >
-              <DocumentDownloadIcon width={42} />
-              <small className="text-center">
-                Download
-                <br />
-                Resume
-              </small>
-            </a>
             {photo && (
               <img
                 alt={`${fullName} Photo`}
@@ -57,8 +42,6 @@ const Home: NextPage<Portfolio> = ({
             )}
 
             <div className="mt-6 text-center">
-              <Name fullName={fullName} />
-
               <Basic
                 location={location}
                 email={contact?.email}
@@ -66,23 +49,17 @@ const Home: NextPage<Portfolio> = ({
                 website={undefined}
               />
 
-              {/* <h2 className="mt-10 text-2xl font-semibold leading-none">
-                {header.title}
-              </h2>
-
-              <h3 className="mt-4 text-xl font-light leading-none">
-                <PortableText value={header.body} />
-              </h3> */}
-
               {bio && <Bio className="-mx-6 mt-12" value={bio} />}
 
-              {tech && <Tech className="mt-12" value={tech} />}
+              {tech && <Tech className="mt-8" value={tech} />}
 
-              {experience && (
-                <Experience className="mt-12" value={experience} />
-              )}
+              <hr className="mx-8 my-8 text-gray-400" />
 
-              {projects && <Project className="mt-12" value={projects} />}
+              {experience && <Experience value={experience} />}
+
+              <hr className="mx-8 my-8 text-gray-400" />
+
+              {projects && <Project value={projects} />}
             </div>
           </div>
         </div>

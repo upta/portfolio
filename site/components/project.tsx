@@ -18,10 +18,10 @@ const components: Partial<PortableTextReactComponents> = {
 export const Project: FC<Props> = ({ className, value }) => {
   return (
     <div className={`${className}`}>
-      <h2 className="text-2xl font-semibold leading-none text-gray-700 pdf:text-base">
+      <h2 className="text-2xl font-semibold leading-none pdf:text-base pdf:text-gray-700">
         A Few Side Projects
       </h2>
-      <div className="container mx-auto mt-7 pdf:mt-2 pdf:ml-2">
+      <div className="container mx-auto mt-10 pdf:mt-2 pdf:ml-2">
         <div className="flex flex-col gap-8 pdf:gap-2">
           {value.map((a: any, i: number) => (
             <Item key={i} {...a} />
@@ -58,7 +58,7 @@ export const Item: FC<ProjectSchema> = ({
       </div>
 
       {summary && (
-        <div className="text-sm font-thin text-gray-500 pdf:visible">
+        <div className="hidden text-sm font-thin text-gray-500 pdf:visible">
           {summary}
         </div>
       )}
@@ -70,7 +70,7 @@ export const Item: FC<ProjectSchema> = ({
               <a
                 key={i}
                 href={a}
-                className="mb-1 block text-blue-400"
+                className="mb-1 block text-blue-400 pdf:text-cyan-800"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -80,7 +80,7 @@ export const Item: FC<ProjectSchema> = ({
           </div>
         )}
 
-        <div className="pdf:hidden">
+        <div className="mt-6 pdf:hidden">
           {description && (
             <>
               <Header text="Description" />

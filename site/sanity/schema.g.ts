@@ -85,13 +85,6 @@ export interface Portfolio extends SanityDocument {
   background?: string;
 
   /**
-   * Header — `section`
-   *
-   *
-   */
-  header?: Section;
-
-  /**
    * Bio — `section`
    *
    *
@@ -257,6 +250,13 @@ export type Section = {
    *
    */
   title?: string;
+
+  /**
+   * Summary — `string`
+   *
+   *
+   */
+  summary?: string;
 
   /**
    * Body — `blockContent`
