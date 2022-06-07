@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from "next";
 import { Basic } from "../components/basic";
 import { Bio } from "../components/bio";
 import { Experience } from "../components/experience";
+import { Name } from "../components/name";
 import { Project } from "../components/project";
 import { Tech } from "../components/tech";
 import { Portfolio } from "../sanity";
@@ -42,6 +43,8 @@ const Home: NextPage<Portfolio> = ({
             )}
 
             <div className="mt-6 text-center">
+              <Name fullName={fullName} />
+
               <Basic
                 location={location}
                 email={contact?.email}
